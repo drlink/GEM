@@ -46,6 +46,7 @@ object Form1: TForm1
           'Divisão'
         )
         OnClick = CheckGroup1Click
+        OnItemClick = CheckGroup1ItemClick
         TabOrder = 0
         Data = {
           0400000002020202
@@ -108,6 +109,7 @@ object Form1: TForm1
         Top = 280
         Width = 75
         Caption = 'Limpar'
+        OnClick = Button2Click
         TabOrder = 4
       end
       object Button3: TButton
@@ -116,6 +118,7 @@ object Form1: TForm1
         Top = 280
         Width = 75
         Caption = 'Cancelar'
+        OnClick = Button3Click
         TabOrder = 5
       end
       object ProgressBar1: TProgressBar
@@ -655,6 +658,7 @@ object Form1: TForm1
           D3BF1C24D2BF1C24D0BF1C24CEBF1C25CBBF1C25CABF1C25C8BF1C25C4BE1C25
           C2AC1D26C27F1E27C22900000000000000000000000000000000
         }
+        OnClick = BitBtn1Click
         TabOrder = 7
       end
       object StringGrid1: TStringGrid
@@ -662,6 +666,25 @@ object Form1: TForm1
         Height = 473
         Top = 32
         Width = 608
+        Columns = <        
+          item
+            Title.Caption = 'Num-1'
+            Width = 64
+          end        
+          item
+            Tag = 1
+            Title.Caption = 'Num-2'
+            Width = 64
+          end        
+          item
+            Tag = 2
+            Title.Caption = 'Result'
+            Width = 64
+          end        
+          item
+            Tag = 3
+            Title.Caption = 'Icognita'
+          end>
         TabOrder = 8
       end
       object Label3: TLabel
@@ -675,6 +698,15 @@ object Form1: TForm1
         ParentColor = False
         ParentFont = False
         OnClick = Label3Click
+      end
+      object CheckBox1: TCheckBox
+        Left = 928
+        Height = 23
+        Top = 5
+        Width = 96
+        Caption = 'Resultados'
+        OnChange = CheckBox1Change
+        TabOrder = 9
       end
     end
   end

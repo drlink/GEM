@@ -46,6 +46,7 @@ object Form1: TForm1
           'Divisão'
         )
         OnClick = CheckGroup1Click
+        OnItemClick = CheckGroup1ItemClick
         TabOrder = 0
         Data = {
           0400000002020202
@@ -665,6 +666,25 @@ object Form1: TForm1
         Height = 473
         Top = 32
         Width = 608
+        Columns = <        
+          item
+            Title.Caption = 'Num-1'
+            Width = 64
+          end        
+          item
+            Tag = 1
+            Title.Caption = 'Num-2'
+            Width = 64
+          end        
+          item
+            Tag = 2
+            Title.Caption = 'Result'
+            Width = 64
+          end        
+          item
+            Tag = 3
+            Title.Caption = 'Icognita'
+          end>
         TabOrder = 8
       end
       object Label3: TLabel
@@ -678,6 +698,15 @@ object Form1: TForm1
         ParentColor = False
         ParentFont = False
         OnClick = Label3Click
+      end
+      object CheckBox1: TCheckBox
+        Left = 928
+        Height = 23
+        Top = 5
+        Width = 96
+        Caption = 'Resultados'
+        OnChange = CheckBox1Change
+        TabOrder = 9
       end
     end
   end

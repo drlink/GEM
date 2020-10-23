@@ -39,6 +39,7 @@
         <FRMtype Value="0"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Uprinc"/>
       </Unit>
@@ -71,6 +72,9 @@
       </Item>
       <Item>
         <Name Value="EFOpenError"/>
+      </Item>
+      <Item>
+        <Name Value="RunError(216)"/>
       </Item>
     </Exceptions>
   </Debugging>
