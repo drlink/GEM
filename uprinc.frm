@@ -45,7 +45,6 @@ object Form1: TForm1
           'Multiplicação'
           'Divisão'
         )
-        OnClick = CheckGroup1Click
         OnItemClick = CheckGroup1ItemClick
         TabOrder = 0
         Data = {
@@ -91,7 +90,7 @@ object Form1: TForm1
           'Inteiros     '
           'Decimais'
         )
-        OnClick = RadioGroup1Click
+        OnSelectionChanged = RadioGroup1SelectionChanged
         TabOrder = 2
       end
       object Button1: TButton

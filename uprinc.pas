@@ -46,16 +46,17 @@ type
     procedure Button3Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure CheckBox3Change(Sender: TObject);
-    procedure CheckGroup1Click(Sender: TObject);
+
     procedure CheckGroup1ItemClick(Sender: TObject; Index: integer);
     procedure FormShow(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
+    procedure RadioGroup1SelectionChanged(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
   private
 
-         function Calcula(Termo1,Termo2:integer):integer;
+         function Calcula(Termo1:Integer; Termo2:Integer; Termo3:Integer):integer;
          function VerificaItens():Integer;
 
          procedure Limpacampos;
@@ -108,7 +109,7 @@ begin
     //retorno
     if count <> 0 then
        begin
-         ShowMessage(IntToStr(count));
+         //ShowMessage(IntToStr(count));
          Result:=count;
        end
     else
@@ -121,29 +122,34 @@ begin
 end;
 
 //==================================================================================================================
-
-function TForm1.Calcula(Termo1,Termo2:Integer):Integer;
+ //Acresentar mais uma variavel para ler a quantidade de linhas
+ //Acresentar a verificação de quais operações devemos executar estraindo do array
+function TForm1.Calcula(Termo1:Integer; Termo2:Integer; Termo3:Integer):Integer;
 var  //ToDo: Função Calcula
-  Quant, num1, num2, i, verf, r1 :Integer;
+  ter1, ter2, Quant, num1, num2, i, verf, r1 :Integer;
   fnum1, fnum2, fr1 :Real;
 
 begin
 
     verf:=VerificaItens();
-    Quant:=10;
+     ter1:= Termo1;
+     ter2:= Termo2;
+    Quant:=Termo3;
     CheckBox1.Visible:=True;
     //StringGrid1.AutoSizeColumn(1);
-   // StringGrid1.AutoSizeColumn(2);
-   // StringGrid1.AutoSizeColumn(3);
+    //StringGrid1.AutoSizeColumn(2);
+    //StringGrid1.AutoSizeColumn(3);
 
     StringGrid1.RowCount:=Quant +1; // quantidade de linhas
 
+
+
     if verf = 3 then
        begin
-           case (Termo1) of
-                1:begin
+           case (ter1) of
 
-                       If Termo2 = 1 then
+                1:begin
+                       If ter2 = 1 then
                           begin
                                  for i:=1 to Quant do
                                      begin
@@ -151,7 +157,7 @@ begin
                                           num2:=Random(200);
                                           r1:=num1 + num2;
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
-                                          StringGrid1.Cells[1,i]:=IntToStr(num1)+'+';
+                                          StringGrid1.Cells[1,i]:=IntToStr(num1)+' +';
                                           StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
                                           StringGrid1.Cells[3,i]:=IntToStr(r1);
                                           StringGrid1.Cells[4,i]:='???';
@@ -165,7 +171,118 @@ begin
                                           fnum2:=Random(200) * 0.10;
                                           fr1:=fnum1 + fnum2;
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
-                                          StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+'+';
+                                          StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' +';
+                                          StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
+                                          StringGrid1.Cells[3,i]:=FloatToStr(fr1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end;
+                  end;
+
+                2:begin
+                       If ter2 = 1 then
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          num1:=Random(200);
+                                          num2:=Random(200);
+                                          r1:=num1 - num2;
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=IntToStr(num1)+' -';
+                                          StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
+                                          StringGrid1.Cells[3,i]:=IntToStr(r1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end
+                       else
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          fnum1:=Random(200) * 0.11;
+                                          fnum2:=Random(200) * 0.10;
+                                          fr1:=fnum1 - fnum2;
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' -';
+                                          StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
+                                          StringGrid1.Cells[3,i]:=FloatToStr(fr1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end;
+                  end;
+
+                3:begin
+                       If ter2 = 1 then
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          num1:=Random(200);
+                                          num2:=Random(200);
+                                          r1:=num1 * num2;
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=IntToStr(num1)+' *';
+                                          StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
+                                          StringGrid1.Cells[3,i]:=IntToStr(r1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end
+                       else
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          fnum1:=Random(200) * 0.11;
+                                          fnum2:=Random(200) * 0.10;
+                                          fr1:=fnum1 * fnum2;
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' *';
+                                          StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
+                                          StringGrid1.Cells[3,i]:=FloatToStr(fr1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end;
+                  end;
+
+                4:begin
+                       If ter2 = 1 then
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          num1:=Random(200) * 3;
+                                          num2:=Random(50);
+                                          if (num2 = 0)then
+                                             num2:= num2 +50;
+
+                                          r1:= num1 div num2;
+                                          if (r1 <= 0) then
+                                             begin
+                                               num1:=Random(400) * 3;
+                                               num2:=Random(80);
+                                               r1:= num1 div num2;
+
+
+                                               //Calcula(ter1,ter2,QtdOp);
+                                             end;
+
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=IntToStr(num1)+' /';
+                                          StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
+                                          StringGrid1.Cells[3,i]:=IntToStr(r1);
+                                          StringGrid1.Cells[4,i]:='???';
+                                     end;
+                          end
+                       else
+                          begin
+                                 for i:=1 to Quant do
+                                     begin
+                                          fnum1:=Random(200) * 2.30;
+                                          fnum2:=Random(200) * 0.10;
+                                          if (Fnum1 = 0.0) then
+                                             begin
+                                               fnum1:=Random(200) * 3;
+                                             end;
+                                          fr1:=fnum1 / fnum2;
+
+                                          StringGrid1.Cells[0,i]:=IntToStr(i);
+                                          StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' /';
                                           StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
                                           StringGrid1.Cells[3,i]:=FloatToStr(fr1);
                                           StringGrid1.Cells[4,i]:='???';
@@ -174,33 +291,9 @@ begin
                   end;
 
 
-                2:begin
 
-                  end;
-
-
-                3:begin
-
-                  end;
-
-
-                4:begin
-
-                  end;
 
            end;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
        end
@@ -209,10 +302,11 @@ begin
             ShowMessage('Selecioine as opções acima para gerar os exercicios');
        end;
 
-
  Result:=0;
 
 end;
+
+
 
 //=================================================================================================================
 
@@ -257,6 +351,31 @@ begin
 
 end;
 
+procedure TForm1.RadioGroup1SelectionChanged(Sender: TObject);
+begin
+
+  if RadioGroup1.ItemIndex = 0 then
+     begin
+          PresiOp:=1;
+          //ShowMessage(IntToStr(PresiOp)+' inteiro');
+     end
+  else
+     begin
+          PresiOp:=2;
+     end;
+
+  if RadioGroup1.ItemIndex = 1 then
+     begin
+          PresiOp:=2;
+          //ShowMessage(IntToStr(PresiOp)+' Decimal');
+     end
+  else
+     begin
+          PresiOp:=1;
+     end;
+
+end;
+
 procedure TForm1.TrackBar1Change(Sender: TObject);
 begin
   {Todo -oCezar -cDev 5: Este barra deve informar a quantiodade de exercicios a serem gerados limite de 100  exercicios e minimo de 1
@@ -281,9 +400,11 @@ begin
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:Integer;
 begin
-
-  Calcula(SinalOp, PresiOp);
+   a:= TrackBar1.Position;
+  Calcula(QtdOp, PresiOp, a);
  // ToDo -oCezar -cDev 3: Este botao deve executar as 4 operações basica deacordo com o minimo selecionado nas caixas de operações.
 end;
 
@@ -309,17 +430,33 @@ begin
 
 end;
 
-procedure TForm1.CheckGroup1Click(Sender: TObject);
-begin
-
-end;
 
 procedure TForm1.CheckGroup1ItemClick(Sender: TObject; Index: integer);
-var
-  text1:Boolean;
 begin
-   text1:=CheckGroup1.Checked[0];
-  ShowMessage(BoolToStr(text1));
+  //ToDo:Seleção de operação
+  if CheckGroup1.Checked[0] then
+     begin
+         QtdOp:=1;
+         //ShowMessage(IntToStr(QtdOp[0])+' '+IntToStr(QtdOp[1])+' '+IntToStr(QtdOp[2])+' '+IntToStr(QtdOp[3])+' mais');
+     end;
+
+  if CheckGroup1.Checked[1] then
+     begin
+          QtdOp:=2;
+     end;
+
+  if CheckGroup1.Checked[2] then
+     begin
+          QtdOp:=3;
+     end;
+
+  if CheckGroup1.Checked[3] then
+     begin
+          QtdOp:=4;
+     end;
+
+
+
 
 end;
 
