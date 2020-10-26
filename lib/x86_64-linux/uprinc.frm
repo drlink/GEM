@@ -19,7 +19,7 @@ object Form1: TForm1
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Operações basicas - ( +, -, *, / )'
-      ClientHeight = 505
+      ClientHeight = 502
       ClientWidth = 1028
       object CheckGroup1: TCheckGroup
         Left = 8
@@ -126,14 +126,6 @@ object Form1: TForm1
         Top = 400
         Width = 384
         TabOrder = 6
-      end
-      object Label2: TLabel
-        Left = 96
-        Height = 15
-        Top = 376
-        Width = 182
-        Caption = 'GERANDO EXERCICIOS AGUARDE'
-        ParentColor = False
       end
       object BitBtn1: TBitBtn
         Left = 128
@@ -708,5 +700,21 @@ object Form1: TForm1
         TabOrder = 9
       end
     end
+  end
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    OnGetValue = frReport1GetValue
+    Left = 24
+    Top = 536
+  end
+  object frUserDataset1: TfrUserDataset
+    OnCheckEOF = frUserDataset1CheckEOF
+    OnFirst = frUserDataset1First
+    OnNext = frUserDataset1Next
+    Left = 112
+    Top = 536
   end
 end

@@ -25,6 +25,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="lz_Report"/>
+      </Item>
+      <Item>
         <PackageName Value="adLCL"/>
       </Item>
     </RequiredPackages>

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  ActnList, ExtCtrls, Buttons, Grids;
+  ActnList, ExtCtrls, Buttons, Grids, LR_Class, LR_DSet;
 
 type
 
@@ -31,8 +31,9 @@ type
     Button3: TButton;
     CheckBox1: TCheckBox;
     CheckGroup1: TCheckGroup;
+    frReport1: TfrReport;
+    frUserDataset1: TfrUserDataset;
     Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     PageControl1: TPageControl;
     ProgressBar1: TProgressBar;
@@ -49,6 +50,10 @@ type
 
     procedure CheckGroup1ItemClick(Sender: TObject; Index: integer);
     procedure FormShow(Sender: TObject);
+    procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
+    procedure frUserDataset1CheckEOF(Sender: TObject; var Eof: Boolean);
+    procedure frUserDataset1First(Sender: TObject);
+    procedure frUserDataset1Next(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
@@ -71,6 +76,7 @@ var
   SinalOp:Integer;
   QtdOp:Integer;
   PresiOp:Integer;
+  ln:Integer = 1;
 
 implementation
 
@@ -130,17 +136,24 @@ var  //ToDo: Função Calcula
   fnum1, fnum2, fr1 :Real;
 
 begin
-
     verf:=VerificaItens();
-     ter1:= Termo1;
-     ter2:= Termo2;
+    ter1:= Termo1;
+    ter2:= Termo2;
     Quant:=Termo3;
     CheckBox1.Visible:=True;
-    //StringGrid1.AutoSizeColumn(1);
-    //StringGrid1.AutoSizeColumn(2);
-    //StringGrid1.AutoSizeColumn(3);
+    StringGrid1.AutoSizeColumn(1);
+    StringGrid1.AutoSizeColumn(2);
+    StringGrid1.AutoSizeColumn(3);
 
     StringGrid1.RowCount:=Quant +1; // quantidade de linhas
+
+    ProgressBar1.Visible:=True;
+    ProgressBar1.Min:=0;
+    ProgressBar1.Max:=Quant;
+    ProgressBar1.Smooth:=True;
+    ProgressBar1.Enabled:=True;
+
+
 
 
 
@@ -161,6 +174,7 @@ begin
                                           StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
                                           StringGrid1.Cells[3,i]:=IntToStr(r1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i;
                                      end;
                           end
                        else
@@ -175,6 +189,7 @@ begin
                                           StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
                                           StringGrid1.Cells[3,i]:=FloatToStr(fr1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end;
                   end;
@@ -184,28 +199,39 @@ begin
                           begin
                                  for i:=1 to Quant do
                                      begin
-                                          num1:=Random(200);
-                                          num2:=Random(200);
-                                          r1:=num1 - num2;
+
+                                          repeat
+                                             num1:=Random(200);
+                                             num2:=Random(200);
+                                             r1:= num1 - num2;
+                                          until (r1 > 0) and (num1 > num2);
+
+
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
                                           StringGrid1.Cells[1,i]:=IntToStr(num1)+' -';
                                           StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
                                           StringGrid1.Cells[3,i]:=IntToStr(r1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end
                        else
                           begin
                                  for i:=1 to Quant do
                                      begin
-                                          fnum1:=Random(200) * 0.11;
-                                          fnum2:=Random(200) * 0.10;
+
+                                          repeat
+                                            fnum1:=Random(200) * 0.11;
+                                            fnum2:=Random(200) * 0.10;
+                                          until (fnum1 > 0) and (fnum1 >= fnum2);
+
                                           fr1:=fnum1 - fnum2;
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
                                           StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' -';
                                           StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
                                           StringGrid1.Cells[3,i]:=FloatToStr(fr1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end;
                   end;
@@ -223,20 +249,25 @@ begin
                                           StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
                                           StringGrid1.Cells[3,i]:=IntToStr(r1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end
                        else
                           begin
                                  for i:=1 to Quant do
                                      begin
+                                          repeat
                                           fnum1:=Random(200) * 0.11;
                                           fnum2:=Random(200) * 0.10;
+                                          until (fnum1 > 0) and (fnum2 > 0);
+
                                           fr1:=fnum1 * fnum2;
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
                                           StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' *';
                                           StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
                                           StringGrid1.Cells[3,i]:=FloatToStr(fr1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end;
                   end;
@@ -246,46 +277,36 @@ begin
                           begin
                                  for i:=1 to Quant do
                                      begin
-                                          num1:=Random(200) * 3;
-                                          num2:=Random(50);
-                                          if (num2 = 0)then
-                                             num2:= num2 +50;
-
+                                          repeat
+                                             num1:=Random(200);
+                                             num2:=Random(200);
+                                          until (num1 > 0) and (num2 > 0) and (num1 > num2) and ((num1)MOD(num2) = 0);
                                           r1:= num1 div num2;
-                                          if (r1 <= 0) then
-                                             begin
-                                               num1:=Random(400) * 3;
-                                               num2:=Random(80);
-                                               r1:= num1 div num2;
-
-
-                                               //Calcula(ter1,ter2,QtdOp);
-                                             end;
 
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
                                           StringGrid1.Cells[1,i]:=IntToStr(num1)+' /';
                                           StringGrid1.Cells[2,i]:=IntToStr(num2)+'=';
                                           StringGrid1.Cells[3,i]:=IntToStr(r1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end
                        else
                           begin
                                  for i:=1 to Quant do
                                      begin
-                                          fnum1:=Random(200) * 2.30;
-                                          fnum2:=Random(200) * 0.10;
-                                          if (Fnum1 = 0.0) then
-                                             begin
-                                               fnum1:=Random(200) * 3;
-                                             end;
-                                          fr1:=fnum1 / fnum2;
+                                          repeat
+                                           fnum1:=Random(200) * 2.30;
+                                           fnum2:=Random(200) * 0.10;
+                                          until(fnum1 > 0) and (fnum2 > 0);
 
+                                          fr1:=fnum1 / fnum2;
                                           StringGrid1.Cells[0,i]:=IntToStr(i);
                                           StringGrid1.Cells[1,i]:=FloatToStr(fnum1)+' /';
                                           StringGrid1.Cells[2,i]:=FloatToStr(fnum2)+'=';
                                           StringGrid1.Cells[3,i]:=FloatToStr(fr1);
                                           StringGrid1.Cells[4,i]:='???';
+                                          ProgressBar1.Position:=i
                                      end;
                           end;
                   end;
@@ -301,7 +322,8 @@ begin
        begin
             ShowMessage('Selecioine as opções acima para gerar os exercicios');
        end;
-
+ ProgressBar1.Visible:=False;
+ BitBtn1.Visible:=True;
  Result:=0;
 
 end;
@@ -327,6 +349,8 @@ begin
              TrackBar1.Position:=0;
              StringGrid1.Clean;
              CheckBox1.Visible:=False;
+             BitBtn1.Visible:=False;
+             ProgressBar1.Visible:=False;
 
 
         end
@@ -423,6 +447,10 @@ end;
 procedure TForm1.BitBtn1Click(Sender: TObject);
 begin
   //ToDo -oCezar -cDev 3: Este botão deve gerar um pdf apos os exercicios serem gerados
+
+  frReport1.LoadFromFile('Rexercicios.lrf');
+  frReport1.ShowReport;
+
 end;
 
 procedure TForm1.CheckBox3Change(Sender: TObject);
@@ -463,13 +491,94 @@ end;
 procedure TForm1.FormShow(Sender: TObject);
 begin
   //Todo: OnShow Uprinc inicialização
-  Label2.Visible:=False;
+
   ProgressBar1.Visible:=False;
   BitBtn1.Visible:=False ;
   StringGrid1.Columns.Items[2].Visible:=False;
   CheckBox1.Visible:=False;
 
 
+end;
+
+procedure TForm1.frReport1GetValue(const ParName: String; var ParValue: Variant);
+begin
+   case QtdOp of
+     1:begin
+           case ParName of
+             'OPERACAO': ParValue:='SOMA';
+             'COLUNA1': ParValue:='PARCELA-1';
+             'COLUNA2': ParValue:='PARCELA-2';
+             'COLUNA3': ParValue:='RESULTADO';
+             'PAR1': ParValue:=StringGrid1.Cells[1,ln];
+             'PAR2': ParValue:=StringGrid1.Cells[2,ln];
+             'RESULT': ParValue:='         ';
+             'CABARITO': ParValue:=StringGrid1.Cells[3,ln];
+           end;
+     end;
+     2:begin
+           case ParName of
+             'OPERACAO': ParValue:='SUBTRAÇÂO';
+             'COLUNA1': ParValue:='MINUENDO';
+             'COLUNA2': ParValue:='SUBTRAENDO';
+             'COLUNA3': ParValue:='RESULTADO';
+             'PAR1': ParValue:=StringGrid1.Cells[1,ln];
+             'PAR2': ParValue:=StringGrid1.Cells[2,ln];
+             'RESULT': ParValue:='         ';
+             'CABARITO': ParValue:=StringGrid1.Cells[3,ln];
+           end;
+     end;
+     3:begin
+         case ParName of
+             'OPERACAO': ParValue:='MULTIPLICAÇÃO';
+             'COLUNA1': ParValue:='FATOR-1';
+             'COLUNA2': ParValue:='FATOR-2';
+             'COLUNA3': ParValue:='RESULTADO';
+             'PAR1': ParValue:=StringGrid1.Cells[1,ln];
+             'PAR2': ParValue:=StringGrid1.Cells[2,ln];
+             'RESULT': ParValue:='         ';
+             'CABARITO': ParValue:=StringGrid1.Cells[3,ln];
+           end;
+
+     end;
+     4:begin
+         case ParName of
+             'OPERACAO': ParValue:='DIVISÃO';
+             'COLUNA1': ParValue:='DIVISOR';
+             'COLUNA2': ParValue:='DIVIDENDO';
+             'COLUNA3': ParValue:='RESILTADO';
+             'PAR1': ParValue:=StringGrid1.Cells[1,ln];
+             'PAR2': ParValue:=StringGrid1.Cells[2,ln];
+             'RESULT': ParValue:='         ';
+             'CABARITO': ParValue:=StringGrid1.Cells[3,ln];
+           end;
+
+     end;
+
+   else ;
+     ShowMessage('NÃO EXISTE OPERAÇÃO SELECIONADA');
+   end;
+
+
+
+
+
+end;
+
+
+procedure TForm1.frUserDataset1CheckEOF(Sender: TObject; var Eof: Boolean);
+begin
+  Eof:= ln > StringGrid1.RowCount -1;
+
+end;
+
+procedure TForm1.frUserDataset1First(Sender: TObject);
+begin
+  ln := 1;
+end;
+
+procedure TForm1.frUserDataset1Next(Sender: TObject);
+begin
+  Inc(ln);
 end;
 
 procedure TForm1.Label3Click(Sender: TObject);

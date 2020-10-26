@@ -9,8 +9,8 @@
         <FRMtype Value="0"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="73" Y="25"/>
-        <UsageCount Value="136"/>
+        <CursorPos Y="19"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -22,9 +22,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Uprinc"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="440"/>
-        <CursorPos X="100" Y="470"/>
-        <UsageCount Value="136"/>
+        <TopLine Value="117"/>
+        <CursorPos X="5" Y="146"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -34,7 +34,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="160"/>
         <CursorPos Y="175"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/include/customcheckbox.inc"/>
@@ -42,7 +42,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos Y="69"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/include/control.inc"/>
@@ -50,15 +50,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2221"/>
         <CursorPos Y="2241"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/include/buttoncontrol.inc"/>
         <FRMtype Value="0"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="34"/>
-        <CursorPos Y="56"/>
-        <UsageCount Value="29"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/include/buttons.inc"/>
@@ -66,7 +65,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="148"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/include/wincontrol.inc"/>
@@ -74,7 +73,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="5409"/>
         <CursorPos Y="5430"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/lclmessageglue.pas"/>
@@ -83,7 +82,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="98"/>
         <CursorPos Y="123"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/interfaces/gtk2/gtk2wsstdctrls.pp"/>
@@ -91,8 +90,8 @@
         <UnitName Value="Gtk2WSStdCtrls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2421"/>
-        <CursorPos X="70" Y="2443"/>
-        <UsageCount Value="29"/>
+        <CursorPos Y="2443"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/grids.pas"/>
@@ -101,7 +100,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10079"/>
         <CursorPos Y="10101"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/interfaces/gtk2/gtk2proc.inc"/>
@@ -109,7 +108,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3714"/>
         <CursorPos Y="3737"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/local/codetyphon/typhon/lcl/interfaces/gtk2/gtk2callback.inc"/>
@@ -117,129 +116,129 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="542"/>
         <CursorPos Y="563"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="247" Column="64" TopLine="237"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="438" Column="56" TopLine="405"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="396" TopLine="375"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="134" TopLine="113"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="396" TopLine="375"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="53" Column="65" TopLine="45"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="140" Column="90" TopLine="107"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="127" TopLine="114"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="130" Column="75" TopLine="108"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="59" Column="62" TopLine="39"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="127" Column="60" TopLine="107"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="133" Column="54" TopLine="374"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="405" TopLine="374"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="406" TopLine="374"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="412" Column="3" TopLine="374"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="405" Column="33" TopLine="383"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="394" Column="36" TopLine="383"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="405" TopLine="383"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="406" TopLine="383"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="132" TopLine="111"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="405" TopLine="384"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="132" TopLine="111"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="405" TopLine="384"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="278" Column="61" TopLine="250"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="254" Column="82" TopLine="231"/>
+        <Caret Line="205" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="256" Column="59" TopLine="240"/>
+        <Caret Line="206" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="255" Column="62" TopLine="236"/>
+        <Caret Line="291" Column="52" TopLine="261"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="253" Column="43" TopLine="236"/>
+        <Caret Line="278" Column="62" TopLine="261"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="276" Column="65" TopLine="266"/>
+        <Caret Line="277" Column="113" TopLine="257"/>
       </Position>
       <Position>
         <Filename Value="uprinc.pas"/>
-        <Caret Line="112" Column="12" TopLine="79"/>
+        <Caret Line="207" Column="75" TopLine="194"/>
       </Position>
     </JumpHistory>
     <RunParams>
